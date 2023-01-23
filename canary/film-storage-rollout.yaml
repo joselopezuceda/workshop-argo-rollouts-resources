@@ -2,25 +2,35 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: film-storage-blue-green
+  name: film-storage
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: film-storage
   strategy:
-    blueGreen:
-      activeService: film-storage-online
-      autoPromotionEnabled: false
-      previewService: <SERVICE_OFFLINE>
+    canary:
+      analysis:
+        startingStep: 1
+        templates:
+        - templateName: film-storage-analysis-template
+      steps:
+      - setWeight: 10
+      - pause:
+          duration: <TIME>
+      - setWeight: 50
+      - pause:
+          duration: <TIME>
   template:
     metadata:
       labels:
         app: film-storage
     spec:
       containers:
-        - name: film-storage
-          image: quay.io/dborrego/film-storage:0.3
+        - envFrom:
+            - configMapRef:
+                name: film-storage-configmap-env-base
+          image: quay.io/dborrego/film-storage:0.2
           imagePullPolicy: Always
           ports:
             - name: http
