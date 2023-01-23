@@ -12,6 +12,9 @@ spec:
     blueGreen:
       activeService: film-storage-online
       autoPromotionEnabled: false
+      prePromotionAnalysis:
+        templates:
+          - templateName: film-storage-analysis-template
       previewService: film-storage-offline
   template:
     metadata:
