@@ -2,15 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: film-storage-blue-green
-  namespace: <OCP_USER>-gitops-argocd
+  namespace: user01-gitops-argocd
 spec:
   destination:
-    namespace: <OCP_USER>-blue-green
+    namespace: user01-blue-green
     server: 'https://kubernetes.default.svc'
   source:
     path: blue-green
-    repoURL: https://github.com/<GITHUB_USER>/workshop-argo-rollouts-resources
-    targetRevision: HEAD
+    repoURL: https://github.com/dbgjerez/workshop-argo-rollouts-resources
+    targetRevision: result
   project: default
   syncPolicy:
     automated:
