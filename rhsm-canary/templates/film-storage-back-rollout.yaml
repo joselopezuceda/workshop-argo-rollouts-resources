@@ -41,16 +41,18 @@ spec:
       dynamicStableScale: true
       analysis:
         templates:
-        - templateName: {{ include "service.name" . }}-analysis-template
+          - templateName: {{ include "service.name" . }}-analysis-template
       trafficRouting:
         istio:
           virtualService:
             routes:
-            - primary
+              - primary
             name: {{ include "service.name" . }}
           destinationRule:
             name: {{ include "service.name" . }}
             canarySubsetName: canary
             stableSubsetName: stable
       steps:
-        <SET-STEPS>
+        - setWeight: 10
+        - pause:
+            duration: 5m
