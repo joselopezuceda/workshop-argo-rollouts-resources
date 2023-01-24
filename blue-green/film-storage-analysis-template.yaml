@@ -11,5 +11,5 @@ spec:
         web:
           jsonPath: '{$.status}'
           url: >-
-            http://film-storage-offline.user06-blue-green.svc.cluster.local:8080/api/v1/health
+            http://film-storage-offline.user06-blue-green.svc.cluster.local/api/v1/health
       successCondition: result == 'UP'
