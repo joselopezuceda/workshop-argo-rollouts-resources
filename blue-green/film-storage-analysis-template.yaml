@@ -1,4 +1,3 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
@@ -12,5 +11,5 @@ spec:
         web:
           jsonPath: '{$.status}'
           url: >-
-            http://film-storage-offline.<USERNAME>-blue-green.svc.cluster.local:8080/api/v1/health
+            http://film-storage-offline.user06-blue-green.svc.cluster.local:8080/api/v1/health
       successCondition: result == 'UP'
