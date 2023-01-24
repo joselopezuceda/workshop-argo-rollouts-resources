@@ -5,7 +5,7 @@ metadata:
   namespace: user06-gitops-argocd
 spec:
   destination:
-    namespace: <OCP_USER>-canary
+    namespace: user06-canary
     server: 'https://kubernetes.default.svc'
   source:
     path: canary
