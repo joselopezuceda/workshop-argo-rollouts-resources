@@ -12,5 +12,5 @@ spec:
         web:
           jsonPath: '{$.status}'
           url: >-
-            http://film-storage-online.<USERNAME>-canary.svc.cluster.local/api/v1/health
+            http://film-storage-online.user06-canary.svc.cluster.local/api/v1/health
       successCondition: result == 'UP'
