@@ -3,6 +3,6 @@ service:
   image:
     repository: quay.io/dborrego/film-storage
     version: no-default-value
-  replicas: 4
+  replicas: 5
 
 domain: no-default-value
