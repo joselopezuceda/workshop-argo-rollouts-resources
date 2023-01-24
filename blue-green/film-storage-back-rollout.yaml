@@ -10,12 +10,12 @@ spec:
       app: film-storage
   strategy:
     blueGreen:
-      activeService: blue_online
+      activeService: film-storage-online
       autoPromotionEnabled: false
       prePromotionAnalysis:
         templates:
-          - templateName: dstrategies-back-analysis-template
-      previewService: blue_offline
+          - templateName: film-storage-analysis-template
+      previewService: film-storage-offline
   template:
     metadata:
       labels:
@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: film-storage
-          image: quay.io/dborrego/film-storage:0.2
+          image: quay.io/dborrego/film-storage:0.3
           imagePullPolicy: Always
           ports:
             - name: http
